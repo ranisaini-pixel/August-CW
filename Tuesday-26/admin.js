@@ -49,7 +49,17 @@
 
 const prompt = require("prompt-sync")();
 
-let users = [];
+let users = [{
+    name: "Rani Saini",
+    email: "sainirani@gmail.com",
+    role:"Admin"
+},
+    {
+        name: "Rakhi Sen",
+        email: "rakhi@gmail.com",
+        role:"Employee"
+}
+];
 let store_name = "CodingWorkx";
 
 console.log(`Welcome to ${store_name}`);
@@ -69,17 +79,25 @@ Please select one option to proceed-
         case "1":
             let userEmail = prompt("Enter your email: ");
 
-            const emailExists = users.filter(user => user.email === userEmail);
+
+          const emailExists = users.find((u) => u.email === userEmail);
 
             if (emailExists) {
 
-                const verifyRole = emailExists[0].role;
+                const verifyRole = emailExists.role;
+
+                  console.log(verifyRole,"87")
 
                 if (verifyRole === "Admin") {
 
                     console.clear();
                     console.log("Your are Authorised, Login successful");
-                    console.log("Welcome to CodingWorkx");
+                    console.log(` Welcome to CW Admin
+                        1. Add Laptops
+                        2. View All Laptops
+                        3. Search Laptop by Name
+                        4. Delete Laptop by Name
+                        5. Logout`);
 
                 } else {
 

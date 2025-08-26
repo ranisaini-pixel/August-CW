@@ -28,4 +28,3 @@ scenario 1 - when email found with the incorrect role then show error message - 
 scenario 2 - when email not found then show error message - "Your not registered. Register yourself"
 scenario 3 -  Everything goes well then onboard the user by clearing the console
 
-
