@@ -60,6 +60,9 @@ let users = [{
         role:"Employee"
 }
 ];
+
+let laptop = [];
+
 let store_name = "CodingWorkx";
 
 console.log(`Welcome to ${store_name}`);
@@ -86,23 +89,85 @@ Please select one option to proceed-
 
                 const verifyRole = emailExists.role;
 
-                  console.log(verifyRole,"87")
-
                 if (verifyRole === "Admin") {
 
                     console.clear();
                     console.log("Your are Authorised, Login successful");
-                    console.log(` Welcome to CW Admin
-                        1. Add Laptops
-                        2. View All Laptops
-                        3. Search Laptop by Name
-                        4. Delete Laptop by Name
-                        5. Logout`);
+                    console.log("Welcome to CodingWorkx");
+                 
+                    while (true) {
+                        
+                        console.log("1. Add Laptops");
+                        console.log("2. View All Laptops");
+                        console.log("3. Search Laptop by Name");
+                        console.log("4. Delete Laptop by Name");
+                        console.log("5. Logout");
+
+                        let adminChoice = (prompt("Enter your choice: "));
+
+                        switch (adminChoice) {
+                
+                            case "1":
+
+                                let name = prompt("Enter Laptop Name: ");
+                                let brand = prompt("Enter Brand: ");
+                                let quantity = parseInt(prompt("Enter Quantity: "));
+                              
+                                if (name && brand && quantity) {
+
+                                    const laptopDetails = {
+                                        name,
+                                        brand,
+                                        quantity
+                                    }
+
+
+                                    laptop.push(laptopDetails);
+                                    console.log("all laptops: ", laptop)
+                                    console.log("Laptops added successfully");
+                                } else {
+                                    console.log("Enter proper data")
+                                }
+                                break;
+
+                             
+                            
+                            case "2":
+                                if (laptop.length > 0) {
+                                    const laptopExists = laptop.filter((item) => `${item.name} ${item.brand} ${item.quantity}`);
+                                    console.log("All Lpatops: ", laptopExists)
+                                } else {
+                                    console.log("No Laptops found")
+                                }
+                                break;
+                            
+                            case "3":
+                                const searchName = prompt("Enter Laptop Name to Search: ");
+                                const found = laptop.find(item => item.name.toLowerCase() === searchName.toLowerCase());
+                                if (found) {
+                                    console.log(`Laptop Detail: ${found.name} ${found.brand} Qty: ${found.quantity}`);
+                                    
+                                } else {
+                                console.log("No Laptop found")
+                                }
+                              
+                                break;
+                            
+                            case "5":
+                                console.clear()
+                                console.log("Logout")
+
+                                break;
+                            
+                            default:
+                                console.log("Invalid choice")
+                        }
+                    }
 
                 } else {
 
                     console.log("you are unauthorised user")
-                }
+                }``
             } else {
 
                 console.log("Email doesn't exists, please register yourself")
