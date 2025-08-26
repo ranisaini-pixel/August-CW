@@ -20,3 +20,12 @@ lastly exits.
 
 
 
+//Admin task
+
+for login user
+Enter your email  -
+scenario 1 - when email found with the incorrect role then show error message - "You are not authorized to login"
+scenario 2 - when email not found then show error message - "Your not registered. Register yourself"
+scenario 3 -  Everything goes well then onboard the user by clearing the console
+
+
