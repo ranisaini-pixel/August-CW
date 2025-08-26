@@ -18,9 +18,11 @@ while (true) {
 
   let choice = prompt("Enter your choice: ");
 
+
   switch (choice) {
     case "1":
       let item = prompt("Enter item name: ");
+      console.log(item,"25")
       if (item) {
         cart.push(item);
         console.log(`${item} added to cart.`);
