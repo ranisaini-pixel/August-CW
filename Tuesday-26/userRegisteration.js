@@ -43,26 +43,46 @@ Please select one option to proceed-
         case "3":
             let name = prompt("Enter your name: ");
             let email = prompt("Enter your email: ");
-            let role = prompt("Enter your role (Admin/Employee): ");
+            let chooseRole = prompt("Enter your role 1.Admin, 2. Employee : ");
 
 
-            if (name || email || role) {
 
-                const username = name.toLowerCase().replace(/\s/g, '');
+            const admin = "Admin"
+            const employee = "Employee"
 
-                const user = {
-                    name,
-                    email,
-                    role,
-                    username
+            if (chooseRole === '1') {
+                chooseRole = admin;
+            }
+
+            if (chooseRole === '2') {
+                chooseRole = employee;
+            }
+
+
+            if (name && email && chooseRole) {
+
+                const emailExists = users.some(user => user.email === email);
+
+                console.log(emailExists, "69");
+
+                if (!emailExists) {
+
+                    const username = name.toLowerCase().replaceAll(" ", "_") + Date.now()
+
+                    const user = {
+                        name,
+                        email,
+                        chooseRole,
+                        username
+                    }
+
+                    users.push(user);
+
+                    console.log("all users", users);
+                    console.log("Registration successful. Please login.");
+                } else {
+                    console.log("Email Already exists")
                 }
-                
-                users.push(user);
-
-                console.log("all users", users);
-                console.log("Registration successful. Please login.");
-
-
             } else {
                 console.log("Enter proper data")
             }
@@ -77,4 +97,6 @@ Please select one option to proceed-
             console.log("Invalid choice, please try again.");
     }
 }
+
+
 
