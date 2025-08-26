@@ -90,7 +90,6 @@ Please select one option to proceed-
                 console.log("Email doesn't exists, please register yourself")
             }
 
-
             break;
 
         case "2":
