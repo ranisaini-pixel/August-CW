@@ -52,16 +52,19 @@ const prompt = require("prompt-sync")();
 let users = [{
     name: "Rani Saini",
     email: "sainirani@gmail.com",
-    role:"Admin"
+    role: "Admin"
 },
-    {
-        name: "Rakhi Sen",
-        email: "rakhi@gmail.com",
-        role:"Employee"
+{
+    name: "Rakhi Sen",
+    email: "rakhi@gmail.com",
+    role: "Employee"
 }
 ];
 
-let laptop = [];
+let laptop = [
+    { name: 'er', brand: 're', quantity: 2 },
+    { name: 'sdf', brand: 'fds', quantity: 5 }
+];
 
 let store_name = "CodingWorkx";
 
@@ -83,7 +86,7 @@ Please select one option to proceed-
             let userEmail = prompt("Enter your email: ");
 
 
-          const emailExists = users.find((u) => u.email === userEmail);
+            const emailExists = users.find((u) => u.email === userEmail);
 
             if (emailExists) {
 
@@ -94,9 +97,9 @@ Please select one option to proceed-
                     console.clear();
                     console.log("Your are Authorised, Login successful");
                     console.log("Welcome to CodingWorkx");
-                 
+
                     while (true) {
-                        
+
                         console.log("1. Add Laptops");
                         console.log("2. View All Laptops");
                         console.log("3. Search Laptop by Name");
@@ -106,13 +109,13 @@ Please select one option to proceed-
                         let adminChoice = (prompt("Enter your choice: "));
 
                         switch (adminChoice) {
-                
+
                             case "1":
 
                                 let name = prompt("Enter Laptop Name: ");
                                 let brand = prompt("Enter Brand: ");
                                 let quantity = parseInt(prompt("Enter Quantity: "));
-                              
+
                                 if (name && brand && quantity) {
 
                                     const laptopDetails = {
@@ -130,35 +133,56 @@ Please select one option to proceed-
                                 }
                                 break;
 
-                             
-                            
+
+
                             case "2":
                                 if (laptop.length > 0) {
-                                    const laptopExists = laptop.filter((item) => `${item.name} ${item.brand} ${item.quantity}`);
-                                    console.log("All Lpatops: ", laptopExists)
+
+                                    laptop.forEach(l => {
+                                        console.log(`${l.name} | ${l.brand} | Qty: ${l.quantity}`);
+                                    });
                                 } else {
                                     console.log("No Laptops found")
                                 }
                                 break;
-                            
+
                             case "3":
                                 const searchName = prompt("Enter Laptop Name to Search: ");
                                 const found = laptop.find(item => item.name.toLowerCase() === searchName.toLowerCase());
+
                                 if (found) {
                                     console.log(`Laptop Detail: ${found.name} ${found.brand} Qty: ${found.quantity}`);
-                                    
+
                                 } else {
-                                console.log("No Laptop found")
+                                    console.log("No Laptop found")
                                 }
-                              
+
                                 break;
-                            
+
+                            case "4":
+                                
+                                const searchNameToDelete = prompt("Enter Laptop Name to delete: ");
+
+                                if (searchNameToDelete) {
+
+                                    const filteredLaptop = laptop.filter(obj => obj.name !== searchNameToDelete);
+
+                                    laptop = filteredLaptop;
+                                    console.log("all laptop", filteredLaptop)
+
+                                } else {
+                                    console.log("Laptop not deleted");
+                                }
+
+                                break;
+
+
                             case "5":
                                 console.clear()
                                 console.log("Logout")
 
                                 break;
-                            
+
                             default:
                                 console.log("Invalid choice")
                         }
@@ -167,7 +191,7 @@ Please select one option to proceed-
                 } else {
 
                     console.log("you are unauthorised user")
-                }``
+                } ``
             } else {
 
                 console.log("Email doesn't exists, please register yourself")
