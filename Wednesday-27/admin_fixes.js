@@ -57,8 +57,8 @@ let users = [{
 }];
 
 let laptop = [
-    { name: 'er', brand: 'rr', quantity: 3 },
-    { name: 'tt', brand: 'gh', quantity: 4 }
+    // { name: 'er', brand: 'rr', quantity: 3 },
+    // { name: 'tt', brand: 'gh', quantity: 4 }
 ];
 
 let store_name = "CodingWorkx";
@@ -128,8 +128,6 @@ Please select one option to proceed-
                                 }
                                 break;
 
-
-
                             case "2":
                                 if (laptop.length > 0) {
 
@@ -142,38 +140,49 @@ Please select one option to proceed-
                                 break;
 
                             case "3":
-                                const searchName = prompt("Enter Laptop Name to Search: ");
-                                const found = laptop.find(item => item.name.toLowerCase() === searchName.toLowerCase());
-
-                                if (found) {
-                                    console.log(`Laptop Detail: ${found.name} ${found.brand} Qty: ${found.quantity}`);
+                                if (laptop.length === 0) {
+                                    console.log("No data exists to search")
 
                                 } else {
-                                    console.log("No Laptop found")
+                                    const searchName = prompt("Enter Laptop Name to Search: ");
+                                    const found = laptop.find(item => item.name.toLowerCase() === searchName.toLowerCase());
+
+                                    if (found) {
+                                        console.log(`Laptop Detail: ${found.name} ${found.brand} Qty: ${found.quantity}`);
+
+                                    } else {
+                                        console.log("No Laptop found")
+                                    }
                                 }
 
                                 break;
 
                             case "4":
 
-                                const searchNameToDelete = prompt("Enter Laptop Name to delete: ");
-                                const laptopExists = laptop.find((l) => l.name === searchNameToDelete);
-                                if (laptopExists) {
+                                if (laptop.length === 0) {
+                                    console.log("No data exists for delete ")
 
-                                    if (searchNameToDelete) {
-                                        const filteredLaptop = laptop.filter(obj => obj.name !== searchNameToDelete);
-
-                                        laptop = filteredLaptop;
-                                        console.log("all laptop", filteredLaptop)
-                                    } else {
-                                        console.log("Laptop not deleted");
-                                    }
                                 } else {
-                                    console.log("Laptop not found");
+
+                                    const searchNameToDelete = prompt("Enter Laptop Name to delete: ");
+                                    const laptopExists = laptop.find((l) => l.name === searchNameToDelete);
+                                    if (laptopExists) {
+
+                                        if (searchNameToDelete) {
+                                            const filteredLaptop = laptop.filter(obj => obj.name !== searchNameToDelete);
+
+                                            laptop = filteredLaptop;
+                                            console.log("all laptop", filteredLaptop)
+                                        } else {
+                                            console.log("Laptop not deleted");
+                                        }
+                                    } else {
+                                        console.log("Laptop not found");
+                                    }
+
                                 }
 
                                 break;
-
 
                             case "5":
                                 console.clear()
@@ -184,12 +193,13 @@ Please select one option to proceed-
                             default:
                                 console.log("Invalid choice")
                         }
+
                     }
 
                 } else {
 
                     console.log("you are unauthorised user")
-                } ``
+                }
             } else {
 
                 console.log("Email doesn't exists, please register yourself")
