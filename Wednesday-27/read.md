@@ -11,7 +11,3 @@ I have fixes the changes told by kamal sir
 2. View All Laptops = we can view all laptops present in the stock 
 // 3. Search Laptop by Name =we can search laptops present in stock
 // 4. Take One = employee can take 1 laptop from laptop array, we have to add that laptop in user details and reduced the counting of laptopb by 1 in laptop array.
-// 5. Submit One = when user submitted the laptop, we have to take user name then deleted it from user details and added it to the laptops array. 
-// 6. Logout = simply exists.
-
-->admin and employee panel will logout and flow redirected to main menu in case of logout.
