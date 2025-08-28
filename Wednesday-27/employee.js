@@ -145,7 +145,8 @@ Please select one option to proceed-
                     console.log("Your are Authorised, Login successful");
                     console.log("Welcome to CodingWorkx Admin Panel");
 
-                    while (true) {
+                    let adminLoggedIn = true;
+                    while (adminLoggedIn) {
 
                         console.log("1. Add Laptops");
                         console.log("2. View All Laptops");
@@ -240,7 +241,8 @@ Please select one option to proceed-
 
                             case "5":
                                 console.clear()
-                                console.log("Logout")
+                                adminLoggedIn = false;
+                                console.log("Logout Successfully, redirect to main menu")
 
                                 break;
 
@@ -277,7 +279,8 @@ Please select one option to proceed-
                     console.log("Your are Authorised, Login successful");
                     console.log("Welcome to CodingWorkx Employee");
 
-                    while (true) {
+                    let employeeLoggedIn = true;
+                    while (employeeLoggedIn) {
 
                         console.log("1. About Me")
                         console.log("2. View All Laptops")
@@ -369,12 +372,6 @@ Please select one option to proceed-
                                 break;
 
                             case "5":
-                                // Submit One (Return a Laptop)
-                                // Employee enters Name.
-                                // Check if in their borrowedLaptops list.
-                                // Increase quantity by 1 in inventory.
-                                // Remove it from borrowedLaptops.
-                                // Show::white_check_mark: You have returned "MacBook Pro"
 
                                 let employeeName = prompt("Enter you Name: ")
                                 const findUser = users.find(obj => obj.name === emailExist.name); //to check laptop prsnt in user
@@ -397,11 +394,15 @@ Please select one option to proceed-
 
                             case "6":
                                 console.clear();
-                                console.log("Logout");
+                                employeeLoggedIn = false;
+                                console.log("Logout Successfully, Redirecting to Main menu");
+                                break;
 
 
                             default:
                                 console.log("Invalid Choice");
+
+                                break;
                         }
 
                     }
@@ -472,6 +473,10 @@ Please select one option to proceed-
             console.log("Invalid choice, please try again.");
     }
 }
+
+
+
+
 
 
 
