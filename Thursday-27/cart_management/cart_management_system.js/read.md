@@ -35,3 +35,7 @@
 
 
 // implements this task and the code must be modularise(use function )
+
+
+->implemented cart managment register, login admin, login employee, see all laptop, exists
+-> admin and employee can lagout also
