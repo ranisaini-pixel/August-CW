@@ -148,7 +148,7 @@ Please select one option to proceed-
                     let adminLoggedIn = true;
                     while (adminLoggedIn) {
 
-                        console.log("1. Add Laptops");
+                        console.log("\n1. Add Laptops");
                         console.log("2. View All Laptops");
                         console.log("3. Search Laptop by Name");
                         console.log("4. Delete Laptop by Name");
@@ -308,6 +308,7 @@ Please select one option to proceed-
                                         borrowedLaptopByEmployees[0].quantity++;
 
                                         console.log("Borrowed Laptop Name:", borrowedLaptopByEmployees)
+                                        console.log("Borrowed Laptop Name:", borrowedLaptops, "312")
                                     }
                                 }
 
