@@ -1,8 +1,9 @@
-const { users } = require("./data");
+const { users, products, cart, coupons } = require("./data");
+const { viewAllProducts, searchProduct } = require("./admin")
 
 const prompt = require("prompt-sync")();
 
-function customerMenu(customer) {
+function customerMenu() {
 
     while (true) {
         console.log("Customer Menu")
@@ -42,15 +43,14 @@ function aboutMe() {
     let emp = prompt("Enter your email: ");
     const findEmp = users.find((u) => u.email === emp);
 
+
     if (findEmp) {
 
-        const verifyRole = emp.role;
+        const verifyRole = findEmp.role;
 
-        if (verifyRole === "Employee") {
+        if (verifyRole === "customer") {
 
-            console.log(`\nWelcome Customer: ${users.name}`);
-            console.log(`Welcome Customer: ${customer.email}`);
-            console.log(`Welcome Customer: ${customer.name}`);
+            console.log("Welcome Customer:", findEmp)
         }
 
     } else {
@@ -61,27 +61,75 @@ function aboutMe() {
 }
 
 function addToCart() {
-    console.log("In Progree");
+    let name = prompt("Enter product name to add: ");
+    let product = products.find((p) => p.name === name);
+    if (!product) {
+        console.log("Product not found.");
+    } else {
+        let existing = cart.find((c) => c.name === product.name);
+        if (existing) {
+            existing.quantity++;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+
+        console.log("Product added to cart.", cart);
+    }
 }
 
 function viewCart() {
-    console.log("In Progree");
+    if (cart.length === 0) {
+        console.log("Cart is empty.");
+    } else {
+        console.log("\nYour Cart:");
+        cart.forEach((c, i) =>
+            console.log(`${i + 1}. ${c.name} - $${c.price} x ${c.quantity}`)
+        );
+    }
 }
 
 function updateCartQuantity() {
-    console.log("In Progree");
+    let name = prompt("Enter product name to update quantity: ");
+    let item = cart.find((c) => c.name === name);
+    if (!item) {
+        console.log("Item not in cart.");
+    } else {
+        item.quantity = parseInt(input("Enter new quantity: "));
+        console.log("Cart updated successfully.");
+    }
 }
 
 function removeFromCart() {
-    console.log("In Progree");
+    let name = prompt("Enter product name to remove: ");
+    let index = cart.findIndex((c) => c.name === name);
+    if (index === -1) {
+        console.log("Item not found in cart.");
+    } else {
+        cart.splice(index, 1);
+        console.log("Item removed from cart.");
+    }
 }
 
 function applyCoupon() {
-    console.log("In Progree");
+    let code = prompt("Enter coupon code: ");
+    let coupon = coupons.find((c) => c.code === code);
+    if (!coupon) {
+        console.log("Invalid coupon.");
+    } else {
+        let total = cart.reduce((sum, c) => sum + c.price * c.quantity, 0);
+        let discount = (total * coupon.discount) / 100;
+        console.log(`Coupon applied! You saved $${discount}`);
+    }
 }
 
 function checkout() {
-    console.log("In Progree");
+    if (cart.length === 0) {
+        console.log("Cart is empty.");
+    } else {
+        let total = cart.reduce((sum, c) => sum + c.price * c.quantity, 0);
+        console.log(`Your total is $${total}. Checkout complete!`);
+        cart.length = 0;
+    }
 }
 
 module.exports = { customerMenu };

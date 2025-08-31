@@ -48,3 +48,27 @@
 // 4. Update Product
 // 5. Remove Product
 // 6. Logout
+
+
+
+
+
+case 2
+Welcome Customer
+
+1. About Me
+2. See all Products
+3. Search Product by Name
+4. Add to Cart
+5. View Cart
+6. Update Cart Item Quantity
+7. Remove from Cart
+8. Apply Coupon
+9. Checkout
+10. Logout
+
+
+
+
+
+

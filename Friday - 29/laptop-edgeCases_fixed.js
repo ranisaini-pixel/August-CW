@@ -305,10 +305,10 @@ Please select one option to proceed-
                                     console.log("Borrowed Laptop Name: No Laptops")
                                 } else {
                                     if (borrowedLaptopByEmployees.employeeName === emailExist.user) {
-                                        borrowedLaptopByEmployees[0].quantity++;
+                                        // borrowedLaptopByEmployees[0].quantity++;
 
                                         console.log("Borrowed Laptop Name:", borrowedLaptopByEmployees)
-                                        console.log("Borrowed Laptop Name:", borrowedLaptops, "312")
+
                                     }
                                 }
 
@@ -356,13 +356,18 @@ Please select one option to proceed-
 
                                     if (laptopExists) {
                                         //added laptop to borrowed laptop
-                                        borrowedLaptopByEmployees.push(laptopExists);
+                                        borrowedLaptopByEmployees.push({
+                                            name: laptopExists.name,
+                                            brand: laptopExists.brand,
+                                            quantity: 1
+                                        });
 
                                         const findUser = users.find(obj => obj.name === emailExist.name);
 
                                         if (findUser) {
                                             findUser.borrowedLaptops = borrowedLaptopByEmployees[0];
                                         }
+                                        4
 
                                         console.log(` You have borrowed ${laptopExists.name}`)
                                         laptopExists.quantity = laptopExists.quantity - 1;
