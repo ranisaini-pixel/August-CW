@@ -1,5 +1,6 @@
 const prompt = require("prompt-sync")();
 const { register, login } = require("./auth");
+const {viewAllProducts}=require("./admin")
 
 
 function mainMenu() {

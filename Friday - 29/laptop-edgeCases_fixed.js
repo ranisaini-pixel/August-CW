@@ -367,7 +367,7 @@ Please select one option to proceed-
                                         if (findUser) {
                                             findUser.borrowedLaptops = borrowedLaptopByEmployees[0];
                                         }
-                                        4
+                                        
 
                                         console.log(` You have borrowed ${laptopExists.name}`)
                                         laptopExists.quantity = laptopExists.quantity - 1;

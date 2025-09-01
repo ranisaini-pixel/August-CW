@@ -3,7 +3,8 @@ const { viewAllProducts, searchProduct } = require("./admin")
 
 const prompt = require("prompt-sync")();
 
-function customerMenu() {
+function customerMenu(customer) {
+     console.log(`\nWelcome ElectroMart Employee: ${customer.name}`);
 
     while (true) {
         console.log("Customer Menu")
@@ -94,7 +95,7 @@ function updateCartQuantity() {
     if (!item) {
         console.log("Item not in cart.");
     } else {
-        item.quantity = parseInt(input("Enter new quantity: "));
+        item.quantity = parseInt(prompt("Enter new quantity: "));
         console.log("Cart updated successfully.");
     }
 }

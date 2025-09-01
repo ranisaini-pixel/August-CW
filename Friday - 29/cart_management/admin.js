@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-const { products, users } = require("./data")
+const { products } = require("./data")
 
 function adminMenu(admin) {
     console.log(`\nWelcome ElectroMart Admin: ${admin.name}`);
