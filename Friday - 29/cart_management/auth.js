@@ -10,12 +10,10 @@ function register() {
 
   if (!["admin", "customer"].includes(role)) {
     console.log("Invalid role! Registration failed.");
-    return;
   }
 
   if (users.find((u) => u.email === email)) {
     console.log("User already exists!");
-    return;
   }
 
   users.push({ name, email, role });
@@ -31,8 +29,11 @@ function login(role) {
     return;
   }
 
-  if (role === "admin") adminMenu(user);
-  else customerMenu(user);
+  if (role === "admin") {
+    adminMenu(user);
+  } else {
+    customerMenu(user);
+  }
 }
 
 

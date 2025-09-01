@@ -63,8 +63,10 @@ function viewAllProducts() {
 
     if (products.length > 0) {
 
-        products.forEach(p => {
-            console.log(`name: ${p.name} | brand: ${p.brand} | Qty: ${p.quantity} | price: ${p.price}`);
+        products.forEach((p,i,v) => {
+            console.log(`${++i} name: ${p.name} | brand: ${p.brand} | Qty: ${p.quantity} | price: ${p.price}`);
+            console.log(i)
+            console.log(v)
         });
     } else {
         console.log("No Products found")
